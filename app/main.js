@@ -8,6 +8,7 @@ app.on("ready", () => {
     show: false,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
 
@@ -72,9 +73,9 @@ exports.saveHTML = async (content) => {
   fs.writeFileSync(currentFile.filePath, content);
 };
 
-const openFile = (file) => {
+const openFile = (exports.openFile = (file) => {
   const content = fs.readFileSync(file).toString();
   app.addRecentDocument(file);
 
   mainWindow.webContents.send("file-opened", file, content);
-};
+});
