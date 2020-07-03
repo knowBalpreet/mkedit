@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { app, BrowserWindow, dialog } = require("electron");
+const { app, BrowserWindow, dialog, Menu } = require("electron");
 
 let mainWindow = null;
 
@@ -11,6 +11,8 @@ app.on("ready", () => {
       enableRemoteModule: true,
     },
   });
+
+  Menu.setApplicationMenu(applicationMenu);
 
   mainWindow.loadFile(`${__dirname}/index.html`);
 
@@ -79,3 +81,57 @@ const openFile = (exports.openFile = (file) => {
 
   mainWindow.webContents.send("file-opened", file, content);
 });
+
+const template = [
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Open File",
+        accelerator: "CommandOrControl+O",
+        click() {
+          exports.getFileFromUser();
+        },
+      },
+      {
+        label: "Save File",
+        accelerator: "CommandOrControl+S",
+        click() {
+          mainWindow.webContents.send("save-markdown");
+        },
+      },
+      {
+        label: "Save HTML",
+        accelerator: "CommandOrControl+Shift+S",
+        click() {
+          mainWindow.webContents.send("save-html");
+        },
+      },
+      {
+        label: "Copy",
+        role: "copy",
+      },
+      {
+        label: "Dev Tools",
+        role: "toggleDevTools",
+      },
+    ],
+  },
+];
+
+if (process.platform === "darwin") {
+  const applicationName = "Fire Sale";
+  template.unshift({
+    label: applicationName,
+    submenu: [
+      { label: `About ${applicationName}`, role: "about" },
+
+      {
+        label: `Quit ${applicationName}`,
+        role: "quit",
+      },
+    ],
+  });
+}
+
+const applicationMenu = Menu.buildFromTemplate(template);
