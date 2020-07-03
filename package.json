@@ -1,34 +1,26 @@
 {
-  "name": "firesale",
+  "name": "mkedit",
   "version": "1.0.0",
-  "description": "A Frontend Masters Example Application",
+  "description": "Desktop app built with electron to create/edit markdown files and preview in HTML",
   "main": "app/main.js",
   "dependencies": {
-    "electron": "^9.0.5",
-    "marked": "^1.1.0"
+    "electron": "9.0.5",
+    "marked": "1.1.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "devtron": "^1.4.0",
-    "electron-packager": "^15.0.0",
-    "electron-rebuild": "^1.11.0",
-    "eslint": "^7.3.1",
-    "eslint-plugin-import": "^2.22.0"
+    "babel-eslint": "10.1.0",
+    "devtron": "1.4.0",
+    "electron-packager": "15.0.0",
+    "electron-rebuild": "1.11.0",
+    "eslint": "7.3.1",
+    "eslint-plugin-import": "2.22.0"
   },
   "scripts": {
     "start": "electron .",
     "postinstall": "electron-rebuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/electron-in-action/firesale.git"
-  },
   "keywords": [],
-  "author": "Steve Kinney <hello@stevekinney.net> (http://stevekinney.net)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/electron-in-action/firesale/issues"
-  },
-  "homepage": "https://github.com/electron-in-action/firesale#readme"
+  "author": "Balpreet Singh <knowbalpreet@gmail.com>",
+  "license": "ISC"
 }

@@ -23,7 +23,7 @@ const renderMarkdownToHtml = (markdown) => {
 };
 
 const updateUserInterface = (isEdited) => {
-  let title = "Fire Sale";
+  let title = "MkEdit";
   if (filePath) {
     title = `${path.basename(filePath)} - ${title}`;
   }

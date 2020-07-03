@@ -25,7 +25,7 @@ exports.getFileFromUser = async () => {
   const files = await dialog.showOpenDialog(mainWindow, {
     properties: ["openFile"],
     buttonLabel: "Unveil",
-    title: "Open Fire Sale Document",
+    title: "Open MkEdit Document",
     filters: [
       {
         name: "Markdown Files",
@@ -120,7 +120,7 @@ const template = [
 ];
 
 if (process.platform === "darwin") {
-  const applicationName = "Fire Sale";
+  const applicationName = "MkEdit";
   template.unshift({
     label: applicationName,
     submenu: [
